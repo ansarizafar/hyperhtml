@@ -35,11 +35,11 @@ updatetitle(e) {
 
   render() {
     return this.html`
-      <div class="ui container" onconnected=${this.connected.bind(this)}>
+      <div class="container" onconnected=${this.connected.bind(this)}>
       ${new Header()}
       
       <input class="ui input" value="${this.Store.title}" oninput="${this.updatetitle.bind(this)}">
-              <button class="ui red circular button" onclick=${this.click.bind(
+              <button class="button is-info" onclick=${this.click.bind(
           this
         )}>     <i class="heart icon"></i>  Settings Page</button>
 

@@ -1,5 +1,7 @@
-import './styles/semantic.css'
+//import './styles/semantic.css'
 //import './styles/tailwind.css'
+
+import 'bulma/css/bulma.css'
 
 import router from './routes'
 

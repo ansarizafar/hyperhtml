@@ -21,7 +21,7 @@ export default class Settings extends Component {
       ${new Header()}
       <h3 class="ui dividing header">Settings</h3>
       <h4>${this.Store.user.name}</h4>
-      <button class="ui small button twitter" onclick=${this.click.bind(this)}>Home Page</button>
+      <button class="button is-success is-outlined" onclick=${this.click.bind(this)}>Home Page</button>
         </div>`
     }
   }
