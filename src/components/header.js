@@ -1,5 +1,8 @@
-const { Component } = require("hyperhtml/umd");
 
+const { Component } = require("hyperhtml/umd");
+import {Store} from '../decorators'
+
+@Store
 export default class Header extends Component {
     constructor() {
       super();
@@ -8,7 +11,7 @@ export default class Header extends Component {
     render() {
       return this.html`
       <h3 class="ui block header">
-      Main Header
+      ${this.Store.title}
     </h3>`
            }
   }

@@ -1,11 +1,12 @@
 import router from "roadtrip";
-import Home from './pages/home'
+import Home from "./pages/home";
 const { hyper } = require("hyperhtml/umd");
-
+//const hyperApp = require("hyperhtml-app");
 
 export default function(app) {
   app.router = router
-router
+  
+  router
   .add("/", {
     enter: function(route, previousRoute) {
       hyper(document.body)`${new Home(app)}`;

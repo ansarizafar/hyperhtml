@@ -1,5 +1,8 @@
 const { Component } = require("hyperhtml/umd");
 import Header from '../components/header'
+import {Store} from '../decorators'
+
+@Store
 export default class Settings extends Component {
     constructor(app) {
       super();
@@ -16,7 +19,8 @@ export default class Settings extends Component {
       <div class="ui container">
       ${new Header()}
       <h3 class="ui dividing header">Settings</h3>
-        <button class="ui small button twitter" onclick=${this.click.bind(this)}>Home Page</button>
+      <h4>${this.Store.user.name}</h4>
+      <button class="ui small button twitter" onclick=${this.click.bind(this)}>Home Page</button>
         </div>`
     }
   }
