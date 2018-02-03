@@ -1,6 +1,4 @@
-import mitt from 'mitt'
-
-let emitter = mitt()
+import {emitter} from './event'
 
 let handlers = {
     set: function(target, prop, value) {
@@ -18,7 +16,6 @@ export function Store(constructor) {
     constructor(args) {
       super(args);
       this.Store = dataStore
-      this.emitter = emitter
       emitter.on("update", data => constructor.prototype.render.apply(this, arguments) );      
     }
 

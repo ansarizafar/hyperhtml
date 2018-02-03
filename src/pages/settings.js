@@ -1,8 +1,9 @@
 const { Component } = require("hyperhtml/umd");
 import Header from '../components/header'
-import {Store} from '../decorators'
+import {Store, Router} from '../decorators'
 
 @Store
+@Router
 export default class Settings extends Component {
     constructor(app) {
       super();
@@ -11,7 +12,7 @@ export default class Settings extends Component {
   
     click(e) {
       e.preventDefault();
-      this.app.router.goto("/");
+      this.Router.goto("/");
     }
   
     render() {

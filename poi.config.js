@@ -26,12 +26,12 @@ module.exports = {
   .plugin('purge')
   .init(() => new PurgecssPlugin({
     paths:  glob.sync(`${PATHS.src}/**/*.js`),
-    extractors: [
+   /* extractors: [
       {
         extractor: TailwindExtractor,
         extensions: ["html", "js"]
       }
-    ]
+    ]*/
   }));
   
     }

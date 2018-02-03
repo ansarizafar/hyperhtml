@@ -1,6 +1,8 @@
-//import './styles/semantic.css'
-import './styles/tailwind.css'
-import app from './app'
-import router from './router'
+import './styles/semantic.css'
+//import './styles/tailwind.css'
 
-router(app)
+import router from './routes'
+
+router.start({
+    fallback: "/" // if the current URL matches no route, use this one
+  });

@@ -1,18 +1,17 @@
 const { Component } = require("hyperhtml/umd");
 
 import Header from "../components/header";
-import {Store, Listen} from '../decorators'
+import {Store, Listen, Emitter, Router} from '../decorators'
+
 
 @Store
+@Emitter
+@Router
 export default class Home extends Component {
-  
-  
-  constructor(app) {
-    super();
-    this.app = app;
-    this.app.emitter.on("login", user => this.render());
     
-  }
+  constructor() {
+    super();
+      }
 
 @Listen('login')
 onLogin(data) {
@@ -22,23 +21,28 @@ onLogin(data) {
 
   click(e) {
     e.preventDefault();
-    //this.app.router.goto("/settings");
-    this.emitter.emit('login', {status: 'Success'})
+    this.Router.goto("/settings");
+    //this.Emitter.emit('login', {status: 'Success'})
   
   }
 updatetitle(e) {
   this.Store.title = e.target.value
   }
   
+  connected() {
+
+  }
+
   render() {
     return this.html`
-      <div class="ui container" >
+      <div class="ui container" onconnected=${this.connected.bind(this)}>
       ${new Header()}
       
-      <input value="${this.Store.title}" oninput="${this.updatetitle.bind(this)}">
-              <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" onclick=${this.click.bind(
+      <input class="ui input" value="${this.Store.title}" oninput="${this.updatetitle.bind(this)}">
+              <button class="ui red circular button" onclick=${this.click.bind(
           this
-        )}>Settings Page</button>
+        )}>     <i class="heart icon"></i>  Settings Page</button>
+
         
         </div>
       `;

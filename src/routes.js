@@ -1,29 +1,25 @@
-import router from "roadtrip";
+import {router} from "./decorators"
 import Home from "./pages/home";
 const { hyper } = require("hyperhtml/umd");
-//const hyperApp = require("hyperhtml-app");
 
-export default function(app) {
-  app.router = router
+export default router
   
   router
   .add("/", {
     enter: function(route, previousRoute) {
-      hyper(document.body)`${new Home(app)}`;
+      hyper(document.body)`${new Home()}`;
       window.scrollTo(route.scrollX, route.scrollY);
     }
   })
   .add("/settings", {
     enter: function(route, previousRoute) {
       import('./pages/settings').then(({ default: Settings }) => {
-        hyper(document.body)`${new Settings(app)}`;
+        hyper(document.body)`${new Settings()}`;
         window.scrollTo(route.scrollX, route.scrollY);
       })
       
     }
   })
-  .start({
-    fallback: "/" // if the current URL matches no route, use this one
-  });
+  
 
-}
+

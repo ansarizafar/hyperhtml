@@ -1,22 +1,25 @@
-import mitt from 'mitt'
+import mitt from "mitt";
 
-let emitter = mitt()
+export let emitter = mitt();
 
-
-export function Listen( name ) {
-  
-    return function( target, propertyKey, descriptor) {
-      const originalMethod = descriptor.value;
-  
-      descriptor.value = function () {
-       emitter.on(name, data => originalMethod.apply(this, data) )
-             };
-  
-      return descriptor;
+export function Emitter(constructor) {
+  return class extends constructor {
+    constructor(args) {
+      super(args);
+      this.Emitter = emitter;
     }
-  
-  }
+  };
+}
 
+export function Listen(name) {
+  return function(target, propertyKey, descriptor) {
+    emitter.on(name, data => descriptor.value(data));
+
+    return descriptor;
+  };
+}
+
+/*
   export function Event(target, key) {
  
     //let value = target[key];
@@ -29,14 +32,13 @@ export function Listen( name ) {
       
     };
    
-    /*
+    
     Reflect.deleteProperty[key];
     Reflect.defineProperty(target, key, {
         get: getter,
         set: setter
     });
-    */
-
+    
 
     
     if (delete target[key]) {
@@ -51,3 +53,4 @@ export function Listen( name ) {
     }
     console.log(target.eEmitter)
   }
+  */
