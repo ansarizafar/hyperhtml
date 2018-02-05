@@ -1,8 +1,8 @@
 const { Component } = require("hyperhtml/umd");
 import Header from '../components/header'
-import {Store, Router} from '../decorators'
+import {Router} from '../decorators'
 
-@Store
+//@Store
 @Router
 export default class Settings extends Component {
     constructor(app) {
@@ -20,7 +20,7 @@ export default class Settings extends Component {
       <div class="ui container">
       ${new Header()}
       <h3 class="ui dividing header">Settings</h3>
-      <h4>${this.Store.user.name}</h4>
+      <h4>HyderTest</h4>
       <button class="button is-success is-outlined" onclick=${this.click.bind(this)}>Home Page</button>
         </div>`
     }

@@ -11,7 +11,7 @@ export default class Header extends Component {
     render() {
       return this.html`
       <h3 class="title">
-      ${this.Store.title}
+  ${this.Store.title}
     </h3>`
            }
   }

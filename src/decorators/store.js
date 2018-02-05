@@ -8,7 +8,7 @@ let handlers = {
     }
 }
 
-let dataStore = new Proxy({user: {name: 'Zafar Ansari'}, title: 'Amazing HyperHtml'}, handlers);
+export let dataStore = new Proxy({user: {name: 'Zafar Ansari'}, title: 'Amazing HyperHtml'}, handlers);
 
 export function Store(constructor) {
 
